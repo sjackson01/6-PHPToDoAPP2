@@ -4,7 +4,7 @@
 include ('list.php');
 
 //Create status flag
-$status = false; //Make changes to what the script display based on true/false/all 
+$status = 'all'; //Make changes to what the script display based on true/false/all 
 
 //Create filter array 
 $filter = array();
@@ -12,37 +12,10 @@ $filter = array();
 /* Foreach Loop key and value */
 
 foreach ($list as $key => $item){
-    //As long as one is true satisfy condtion
-    //All: Satisfies first condition pulling all keys
-    //True: Only pulls 'complete' values = to true
-    //False: Ony pulls 'complete' values = to false
     if($status === 'all' || $item['complete'] == $status) { 
         $filter[] = $key; 
     }   
 }
-/* !All!
-Title	Priority	Due Date	Complete
-Laundry		2		06/09/2016		No	
-Dishes		2				No	
-Dust		3				No	
-Vacuum		1		06/09/2016		No	
-Make Dinner		1				No	
-Clean Out Fridge		2		07/30/2016		Yes	
-*/
-
-/* True 
-Title	Priority	Due Date	Complete
-Clean Out Fridge		2		07/30/2016		Yes	
-*/
-
-/* !False! 
-Title	Priority	Due Date	Complete
-Laundry		2		06/09/2016		No	
-Dishes		2				No	
-Dust		3				No	
-Vacuum		1		06/09/2016		No	
-Make Dinner		1				No
-*/
 
 //Used to show example of string 'all' === 'true'
 //An empty string == 'false'
